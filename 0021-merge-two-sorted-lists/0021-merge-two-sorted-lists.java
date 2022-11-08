@@ -11,40 +11,32 @@
 class Solution {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 == null) return list2;
-        if (list2 == null) return list1;
+        if (list1 == null) return list2; else if (list2 == null) return list1;
 
-        Queue<ListNode> queue = new LinkedList<>();
         ListNode head = null;
+        ListNode current = null;
+        ListNode opposite = null;
+        ListNode temp = null;
         if (list1.val > list2.val) {
             head = list2;
-            queue.offer(list2);
-            list2 = list2.next;
+            current = list2;
+            opposite = list1;
         } else {
             head = list1;
-            queue.offer(list1);
-            list1 = list1.next;
+            current = list1;
+            opposite = list2;
         }
 
-        while (list1 != null && list2 != null) {
-            if (list1.val > list2.val) {
-                queue.offer(list2);
-                list2 = list2.next;
-            } else {
-                queue.offer(list1);
-                list1 = list1.next;
+        while (current.next != null) {
+            if (current.next.val > opposite.val){
+                temp = current.next;
+                current.next = opposite;
+                opposite = temp;
             }
+            current = current.next;
         }
-        if (list1 == null)
-            queue.offer(list2);
-        else
-            queue.offer(list1);
         
-        ListNode temp = queue.poll();
-        while(!queue.isEmpty()){
-            temp.next = queue.poll();
-            temp = temp.next;
-        }
+        current.next = opposite;
         return head;
     }
 }
