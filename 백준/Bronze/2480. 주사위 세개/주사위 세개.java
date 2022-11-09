@@ -5,19 +5,24 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		int[] num = new int[3];
-		for (int i = 0; i < 3; i++) {
-			num[i] = sc.nextInt();
+		int[] numbers = new int[7];
+		for(int i=0;i<3;i++) {
+			numbers[sc.nextInt()]++; // 전체 배열에 등장 빈도수 저장
 		}
-		Arrays.sort(num);
-		if (num[2] == num[1] && num[1] == num[0]) {
-			System.out.println(String.valueOf(10000 + num[2] * 1000));
-		} else if (num[2] == num[1]) {
-			System.out.println(String.valueOf(1000 + num[2] * 100));
-		} else if (num[1] == num[0]) {
-			System.out.println(String.valueOf(1000 + num[1] * 100));
-		} else {
-			System.out.println(String.valueOf(100 * num[2]));
+		
+		int result = 0;
+		for(int i=1;i<7;i++) {
+			if (numbers[i] == 3) {			// 모두 숫자가 같은 경우
+				result = i * 1000 + 10000;
+				break;
+			}else if (numbers[i] == 2) {	// 숫자가 2번 등장한 경우
+				result = i * 100 + 1000;
+				break;
+			}else if (numbers[i] == 1) {	// 숫자 6까지 상금 갱신
+				result = i * 100;
+			}
 		}
+		System.out.println(result);
+		sc.close();
 	}
 }
