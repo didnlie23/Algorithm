@@ -2,6 +2,16 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1926) 
 
+### 추가 공부
+
+#### 연산자 우선순위(operator precedence)
+`&&`가 `||`보다 연산자 우선순위가 높다.
+```java
+int[] temp = { 3, 2, 70 - 1 };
+System.out.println(String.valueOf(temp[2] == 74 && temp[0] == 0 || temp[0] == 3 || temp[1] == 0 || temp[1] == 3));
+// true
+```
+
 ### 성능 요약
 
 메모리: 45248 KB, 시간: 516 ms
