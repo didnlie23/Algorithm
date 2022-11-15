@@ -10,7 +10,7 @@ class Solution {
         }
         if (plus > 0) stack.push(plus);
         int[] answer = new int[stack.size()];
-        for (int i = 0,end=stack.size(); i < end; i++) {
+        for (int i = 0, end = stack.size(); i < end; i++) {
             answer[i] = stack.pop();
         }
         return answer;
