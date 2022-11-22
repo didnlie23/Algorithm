@@ -13,7 +13,7 @@ class Solution {
                 if (queue.get(i) == temp) {
                     max = Math.max(end - start + 1, max);
                     end++;
-                    if (i == 0) {
+                    if (size == 2 && i == 0) {
                         queue.offer(queue.poll());
                     }
                     continue outer;
