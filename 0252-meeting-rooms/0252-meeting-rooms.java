@@ -1,15 +1,20 @@
 class Solution {
 
-    public boolean canAttendMeetings(int[][] intervals) {
-        boolean[] have_a_schedule = new boolean[1000000];
+        public boolean canAttendMeetings(int[][] intervals) {
         int length = intervals.length;
-        for (int i = 0; i < length; i++) {
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-            for (int j = start; j < end; j++) {
-                if (have_a_schedule[j]) return false;
-                have_a_schedule[j] = true;
+        if (length == 0)
+            return true;
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
             }
+        });
+        int end = intervals[0][1];
+        for(int i=1;i<length;i++){
+            if (intervals[i][0] < end)
+                return false;
+            end = intervals[i][1];
         }
         return true;
     }
