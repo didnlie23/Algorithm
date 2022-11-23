@@ -14,7 +14,7 @@ class TwoSum {
             int pair = value - key;
             if (pair != key && map.containsKey(pair)) {
                 return true;
-            } else if (pair == key && map.get(key) > 1){
+            } else if (pair == key && map.get(key) > 1) {
                 return true;
             }
         }
