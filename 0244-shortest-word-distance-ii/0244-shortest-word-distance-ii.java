@@ -17,13 +17,16 @@ class WordDistance {
         int min = Integer.MAX_VALUE;
         ArrayList<Integer> list1 = list.get(word1);
         ArrayList<Integer> list2 = list.get(word2);
-        int diff = -1;
-        for(int i=0,iEnd=list1.size();i<iEnd;i++){
-            for(int j=0,jEnd=list2.size();j<jEnd;j++){
-                diff = Math.abs(list1.get(i) - list2.get(j));
-                if (diff < min){
-                    min = diff;
-                }
+        int index1 = 0;
+        int index2 = 0;
+        int size1 = list1.size();
+        int size2 = list2.size();
+        while (index1 < size1 && index2 < size2) {
+            min = Math.min(Math.abs(list1.get(index1) - list2.get(index2)), min);
+            if (list1.get(index1) < list2.get(index2)){
+                index1++;
+            }else{
+                index2++;
             }
         }
         return min;
